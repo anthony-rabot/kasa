@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import { useFetch } from '../utils/Hooks'
 import Card from '../components/Card'
 import { Link } from 'react-router-dom'
+import Loader from '../components/Loader'
 
 const Home = () => {
   const { data, isLoading, error } = useFetch(`/logements.json`)
@@ -16,7 +17,7 @@ const Home = () => {
     <div className="container">
       <Header />
       {isLoading ? (
-        <p>Chargement</p>
+        <Loader />
       ) : (
         <section className="logements">
           {logementsList?.map((logement) => (
