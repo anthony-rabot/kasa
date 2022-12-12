@@ -1,0 +1,8 @@
+.logements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 58px;
+  padding: 56px 50px;
+  background-color: map-get($kasa-theme, light-gray);
+  border-radius: 25px;
+}

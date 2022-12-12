@@ -1,0 +1,14 @@
+.main-menu {
+  display: flex;
+  gap: 0 57px;
+
+  a {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: map-get($kasa-theme, primary);
+
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}

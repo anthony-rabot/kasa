@@ -1,0 +1,6 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc($global-spacing *2) 0;
+}

@@ -1,0 +1,22 @@
+$white: #fff;
+$black: #000;
+
+// Colors
+$kasa-theme: (
+  'primary': #FF6060,
+  'secondary': #FF79DA,
+  'light-gray': #F7F7F7,
+  'medium-gray': #E5E5E5,
+);
+
+// Fonts
+$body-font-family: 'Montserrat', Helvetica Neue, Helvetica, Arial, sans-serif;
+
+// Layout
+$global-spacing : 1rem;
+
+// Breakpoints
+$breakpoints: (
+  'tablette': 992px,
+  'desktop':  1200px
+);

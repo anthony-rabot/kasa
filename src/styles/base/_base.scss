@@ -1,0 +1,21 @@
+// Box sizing https://css-tricks.com/box-sizing/
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body {
+  font-family: $body-font-family;
+  background-color: $white;
+  margin: 0;
+}
+
+.container {
+  @include is('desktop') {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+}
+
+a {
+  text-decoration: none;
+}
