@@ -1,0 +1,9 @@
+@import-normalize; /* Import normalize.css styles already included with create-react-app */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import "./utils/variables";
+@import "./utils/mixins";
+@import "./base/base";
+@import "./components/header";
+@import "./components/navigation";
+@import "./components/card";
+@import "./pages/home";
