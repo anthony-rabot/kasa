@@ -1,0 +1,10 @@
+.tag {
+  background-color: map-get($kasa-theme, primary);
+  color: $white;
+  border-radius: 2rem;
+  padding: .5rem 1rem;
+
+  &:not(:last-child) {
+    margin-right: $global-spacing;
+  }
+}

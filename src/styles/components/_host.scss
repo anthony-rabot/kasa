@@ -1,0 +1,19 @@
+.host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .host__name {
+    flex: 0 1 80px;
+    text-align: right;
+  }
+
+  .host__picture {
+    img {
+      max-width: 100px;
+      border-radius: 50%;
+      margin-left: $global-spacing;
+    }
+
+  }
+}
