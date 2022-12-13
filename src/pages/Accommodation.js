@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useFetch } from '../utils/Hooks'
 import Loader from '../components/Loader'
 import Tag from '../components/Tag'
@@ -11,6 +11,7 @@ import Footer from '../components/Footer'
 
 function Accommodation() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const { data, isLoading, error } = useFetch(`/logements.json`)
 
   if (error) {
@@ -27,17 +28,22 @@ function Accommodation() {
     accommodationData = accommodationsList.find(
       (accommodation) => accommodation.id === id
     )
-    console.log(accommodationData)
 
-    tags = accommodationData.tags.map((tag, index) => {
-      return <Tag key={index} value={tag} />
-    })
+    if (accommodationData === undefined) {
+      return navigate('/error')
+    }
 
-    rating = accommodationData.rating
+    if (accommodationData) {
+      tags = accommodationData.tags.map((tag, index) => {
+        return <Tag key={index} value={tag} />
+      })
 
-    equipments = accommodationData.equipments.map((equipment, index) => {
-      return <li key={index}>{equipment}</li>
-    })
+      rating = accommodationData.rating
+
+      equipments = accommodationData.equipments.map((equipment, index) => {
+        return <li key={index}>{equipment}</li>
+      })
+    }
   }
 
   return (

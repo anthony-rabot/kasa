@@ -8,8 +8,6 @@ const Accordion = ({ type, title, data }) => {
     setStatus(status === 0 ? 1 : 0)
   }
 
-  console.log(data)
-
   return (
     <div className={status === 1 ? 'accordion open' : 'accordion'}>
       <div className="accordion_label" onClick={changeStatus}>
