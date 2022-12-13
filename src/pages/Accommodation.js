@@ -3,9 +3,11 @@ import Header from '../components/Header'
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../utils/Hooks'
 import Loader from '../components/Loader'
-import MainTitle from '../components/MainTitle'
-import Host from '../components/Host'
 import Tag from '../components/Tag'
+import HeaderAccommodation from '../components/HeaderAccommodation'
+import Slider from '../components/Slider'
+import Accordion from '../components/Accordion'
+import Footer from '../components/Footer'
 
 function Accommodation() {
   const { id } = useParams()
@@ -18,6 +20,9 @@ function Accommodation() {
   const accommodationsList = data ? data : []
   let accommodationData = {}
   let tags = []
+  let rating = 0
+  let equipments = []
+
   if (!isLoading) {
     accommodationData = accommodationsList.find(
       (accommodation) => accommodation.id === id
@@ -27,31 +32,42 @@ function Accommodation() {
     tags = accommodationData.tags.map((tag, index) => {
       return <Tag key={index} value={tag} />
     })
+
+    rating = accommodationData.rating
+
+    equipments = accommodationData.equipments.map((equipment, index) => {
+      return <li key={index}>{equipment}</li>
+    })
   }
 
   return (
-    <div className="container">
-      <Header />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <article className="accommodation">
-          <header className="accommodation__header">
-            <section className="accommodation__infos">
-              <MainTitle
-                title={accommodationData.title}
-                location={accommodationData.location}
+    <div id="content">
+      <div className="container">
+        <Header />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <article className="accommodation">
+            <Slider images={accommodationData.pictures} />
+            <HeaderAccommodation
+              title={accommodationData.title}
+              location={accommodationData.location}
+              host={accommodationData.host}
+              tags={tags}
+              rating={rating}
+            />
+            <section className="accommodation__description">
+              <Accordion
+                type="text"
+                title="Description"
+                data={accommodationData.description}
               />
-              <div className="accommodation__tags">{tags}</div>
+              <Accordion type="list" title="Equipements" data={equipments} />
             </section>
-            <section className="accommodation__host__infos">
-              <Host host={accommodationData.host} />
-            </section>
-          </header>
-
-          <p>{accommodationData.id}</p>
-        </article>
-      )}
+          </article>
+        )}
+      </div>
+      <Footer />
     </div>
   )
 }
