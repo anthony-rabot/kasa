@@ -1,11 +1,10 @@
 import React from 'react'
-import logo from '../assets/logo_kasa.svg'
 import { NavLink } from 'react-router-dom'
 
-const Logo = () => {
+const Logo = ({ logo }) => {
   return (
     <NavLink to="/">
-      <img src={logo} alt="Logo Kasa" />
+      <img className="logo" src={logo} alt="Logo Kasa" />
     </NavLink>
   )
 }

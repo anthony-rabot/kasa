@@ -1,10 +1,10 @@
 import React from 'react'
 
-const MainTitle = (props) => {
+const MainTitle = ({ title, location }) => {
   return (
     <div className="accommodation__title">
-      <h1>{props.title}</h1>
-      <p>{props.location}</p>
+      <h1>{title}</h1>
+      <p>{location}</p>
     </div>
   )
 }
