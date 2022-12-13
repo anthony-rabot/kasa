@@ -1,0 +1,9 @@
+h1 {
+  font-weight: 500;
+  margin-bottom: 0;
+  font-size: 1.6rem;
+
+  @include is('desktop') {
+    font-size: 2rem;
+  }
+}

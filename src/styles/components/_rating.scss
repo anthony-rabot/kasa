@@ -1,0 +1,9 @@
+.rate {
+  img {
+    width: 20px;
+
+    @include is('desktop') {
+      width: inherit;
+    }
+  }
+}

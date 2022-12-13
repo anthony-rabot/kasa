@@ -1,0 +1,9 @@
+.about-wrapper {
+  @include is('desktop') {
+    padding: 25px 50px;
+  }
+
+  .accordion {
+    margin-bottom: calc($global-spacing * 2);
+  }
+}

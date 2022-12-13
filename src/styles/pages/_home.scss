@@ -1,8 +1,14 @@
 .logements {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 58px;
-  padding: 56px 50px;
+  grid-template-columns: 1fr;
+  grid-gap: calc($global-spacing * 1.5);
+  padding: $global-spacing 0;
   background-color: map-get($kasa-theme, light-gray);
   border-radius: 25px;
+
+  @include is('desktop') {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 58px;
+    padding: 56px 50px;
+  }
 }

@@ -1,0 +1,55 @@
+.accordion {
+
+  .accordion_label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: map-get($kasa-theme, primary);
+    color: $white;
+    padding: calc($global-spacing * .8);
+    border-radius: 10px;
+    cursor: pointer;
+
+    h3 {
+      margin: 0;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    img {
+      transition: transform ease-in-out 250ms;
+      transform-origin: center;
+    }
+  }
+
+  & > .accordion_content {
+    display: none;
+  }
+
+  &.open {
+    background-color: map-get($kasa-theme, light-gray);
+
+    & > .accordion_label img {
+      transform: rotate(180deg);
+    }
+
+    & > .accordion_content {
+      display: block;
+    }
+  }
+
+  .accordion_content {
+    padding: calc($global-spacing * .8);
+    color: map-get($kasa-theme, primary);
+
+    p {
+      margin: 0;
+    }
+
+    ul {
+      list-style: none inside none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

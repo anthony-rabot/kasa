@@ -1,11 +1,21 @@
 .main-menu {
   display: flex;
-  gap: 0 57px;
+  gap: 0 calc($global-spacing *2);
+
+  @include is('desktop') {
+    gap: 0 57px;
+  }
 
   a {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 500;
     color: map-get($kasa-theme, primary);
+    text-transform: uppercase;
+
+    @include is('desktop') {
+      font-size: 1.3rem;
+      text-transform: capitalize;
+    }
 
     &.active {
       text-decoration: underline;
