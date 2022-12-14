@@ -8,9 +8,13 @@ const Rating = ({ rate }) => {
 
   for (let i = 1; i < 6; i++) {
     if (i <= rateValue) {
-      content.push(<img key={i} src={starActive} alt="Etoile active" />)
+      content.push(
+        <img key={`rate-${i}`} src={starActive} alt="Etoile active" />
+      )
     } else {
-      content.push(<img src={starInactive} alt="Etoile inactive" />)
+      content.push(
+        <img key={`rate-${i}`} src={starInactive} alt="Etoile inactive" />
+      )
     }
   }
 

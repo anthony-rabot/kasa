@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useFetch } from '../utils/Hooks'
 import Loader from '../components/Loader'
 import Tag from '../components/Tag'
@@ -8,32 +8,38 @@ import HeaderAccommodation from '../components/HeaderAccommodation'
 import Slider from '../components/Slider'
 import Accordion from '../components/Accordion'
 import Footer from '../components/Footer'
+import ErrorMessage from '../components/ErrorMessage'
 
 function Accommodation() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const { data, isLoading, error } = useFetch(`/logements.json`)
 
   if (error) {
-    return <span>Il y a un problème</span>
+    return (
+      <div id="content">
+        <div className="container">
+          <Header />
+          <ErrorMessage
+            message="Oups! Il y a un problème technique"
+            texteLien="Retourner sur la page d'accueil."
+            lien="/"
+          />
+        </div>
+        <Footer />
+      </div>
+    )
   }
 
-  const accommodationsList = data ? data : []
+  // Variables init
   let accommodationData = {}
   let tags = []
   let rating = 0
   let equipments = []
 
-  if (!isLoading) {
-    accommodationData = accommodationsList.find(
-      (accommodation) => accommodation.id === id
-    )
+  if (!isLoading && data) {
+    accommodationData = data.find((accommodation) => accommodation.id === id)
 
-    if (accommodationData === undefined) {
-      return navigate('/error')
-    }
-
-    if (accommodationData) {
+    if (accommodationData !== undefined) {
       tags = accommodationData.tags.map((tag, index) => {
         return <Tag key={index} value={tag} />
       })
@@ -43,6 +49,20 @@ function Accommodation() {
       equipments = accommodationData.equipments.map((equipment, index) => {
         return <li key={index}>{equipment}</li>
       })
+    } else {
+      return (
+        <div id="content">
+          <div className="container">
+            <Header />
+            <ErrorMessage
+              message="Oups! L'appartement recherché n'existe pas."
+              texteLien="Retourner sur la liste des appartements."
+              lien="/"
+            />
+          </div>
+          <Footer />
+        </div>
+      )
     }
   }
 
