@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { useFetch } from '../utils/Hooks'
 import Loader from '../components/Loader'
 import Tag from '../components/Tag'
@@ -51,17 +51,18 @@ function Accommodation() {
       })
     } else {
       return (
-        <div id="content">
-          <div className="container">
-            <Header />
-            <ErrorMessage
-              message="Oups! L'appartement recherché n'existe pas."
-              texteLien="Retourner sur la liste des appartements."
-              lien="/"
-            />
-          </div>
-          <Footer />
-        </div>
+        // <div id="content">
+        //   <div className="container">
+        //     <Header />
+        //     <ErrorMessage
+        //       message="Oups! L'appartement recherché n'existe pas."
+        //       texteLien="Retourner sur la liste des appartements."
+        //       lien="/"
+        //     />
+        //   </div>
+        //   <Footer />
+        // </div>
+        <Navigate to="/error" replace={true} />
       )
     }
   }
